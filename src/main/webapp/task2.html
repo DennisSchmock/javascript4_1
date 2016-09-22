@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <div class="container">
+            <button id="register">Register</button><input id="fullname">            
+            <button id="mybutton">Press me!</button>
+            <div id="person"></div>
+
+            <script>
+                $(function () {
+                    document.getElementById("mybutton").onclick = function () {
+                        var request = $.ajax({
+                            url: "persons",
+                            method: "GET",
+                            dataType: "json"
+                        });
+
+                        request.done(function (data) {
+                            var person = data;
+
+                            $("#person").append("<h1>" + person.name + "</h1>");
+
+
+                        });
+
+                        request.fail(function (request, textStatus) {
+                            alert("Request failed: " + textStatus);
+                        });
+
+
+                    };
+
+                    document.getElementById("register").onclick = function () {
+                        var request = $.ajax({
+                            url: "persons",
+                            method: "POST",
+                            dataType: "json"
+                        });
+
+                        request.done(function () {
+                            var name = $("#fullname").val();
+                            name.post("persons");
+                           ;
+
+
+
+
+                        });
+
+                        request.fail(function (request, textStatus) {
+                            alert("Request failed: " + textStatus);
+                        });
+
+
+                    };
+                });
+            </script>
+
+        </div>
+
+
+
+
+    </body>
+</html>

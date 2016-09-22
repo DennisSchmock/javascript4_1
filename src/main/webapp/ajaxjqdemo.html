@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-3.1.0.js"></script>
+        <script>
+            $(function () {
+                document.getElementById("test").onclick = function () {
+                    var request = $.ajax({
+                        url: "persons",
+                        method: "GET",
+                        dataType: "json"
+                    });
+
+                    request.done(function (data) {
+                        var persons = data;
+                        $("#persons").append("LIST<ul>")
+                        persons.forEach(function (person) {
+                            $("#persons").append("<li>" + person.fName + "</li>");
+                        });
+                        $("#persons").append("</ul>")
+
+                    });
+
+                    request.fail(function (request, textStatus) {
+                        alert("Request failed: " + textStatus);
+                    });
+
+
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <button id="test">Get Server Time</button><div id="persons"><h2></h2></div>
+    </body>
+</html>
