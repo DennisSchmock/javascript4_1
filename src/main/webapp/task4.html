@@ -7,17 +7,16 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <script src="js/task1.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="well">
 
-
+            <h1 id="test">Press something!</h1>
 
         </div>
 
 
-        
+
 
         <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -162,7 +161,35 @@
     </svg>
 
 
-
+    <script>
+        $(function(){
+            
+           $('#north').click(function(){
+               
+                   $("#test").text("North");
+               
+           });
+           $('#south').click(function(){
+               
+                   $("#test").text("South");
+               
+           });
+           $('#east').click(function(){
+               
+                   $("#test").text("East");
+               
+           });
+           $('#west').click(function(){
+               
+                   $("#test").text("West");
+               
+           });
+           
+            
+        });
+        
+        
+    </script>
 
 
 </body>

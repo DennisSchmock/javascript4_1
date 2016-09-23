@@ -7,16 +7,25 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-        <script src="js/task1.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="container">
-        
-            
-        
+        <div>
+
+            <h1 id="watch"></h1>
+
         </div>
 
+        <script>
+            $(function () {
+                setInterval(function () {
+                    var clock = $.get("timeservlet", function (data, status) {
+                        $("#watch").text(data);
 
+                    });
+
+                }, 1000);
+            });
+        </script>
 
 
     </body>
